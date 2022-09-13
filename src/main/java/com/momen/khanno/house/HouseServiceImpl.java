@@ -3,6 +3,8 @@ package com.momen.khanno.house;
 import com.momen.khanno.city.City;
 import com.momen.khanno.city.CityService;
 import com.momen.khanno.common.exception.NotFoundException;
+import com.momen.khanno.real_state.RealState;
+import com.momen.khanno.real_state.RealStateService;
 import com.momen.khanno.region.Region;
 import com.momen.khanno.region.RegionService;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ public class HouseServiceImpl implements HouseService {
     private final HouseRepository repository;
     private final RegionService regionService;
     private final CityService cityService;
+    private final RealStateService realStateService;
 
     @Override
     public House save(House house) {
@@ -76,6 +79,12 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public Page<House> getHousesInCity(Long cityId, Integer page, Integer count) {
         City city = cityService.getById(cityId);
-        return repository.findAllByRegion_City(city, PageRequest.of(page, count, Sort.by("id").ascending()));
+        return repository.findAllByRegion_City_Id(city.getId(), PageRequest.of(page, count, Sort.by("id").ascending()));
+    }
+
+    @Override
+    public Page<House> getHousesInRealState(Long realStateId, Integer page, Integer count) {
+        RealState realState = realStateService.getById(realStateId);
+        return repository.findAllByRegion_City_Id(realState.getId(), PageRequest.of(page, count, Sort.by("id").ascending()));
     }
 }

@@ -72,4 +72,16 @@ public class HouseController {
         return ResponseEntity.ok(pagingData);
     }
 
+    @GetMapping("/paging/region/{realStateId}/{page}/{count}")
+    public ResponseEntity<PagingData<HouseDTO>> getHouseInRealState(@PathVariable Integer page, @PathVariable Integer count, @PathVariable Long realStateId) {
+        Page<House> realState = service.getHousesInRealState(realStateId, page, count);
+
+        int totalPage = realState.getTotalPages();
+        List<HouseDTO> cities = mapper.toHouseDTOs(realState.getContent());
+
+        PagingData<HouseDTO> pagingData = new PagingData<>(totalPage, page, cities);
+
+        return ResponseEntity.ok(pagingData);
+    }
+
 }

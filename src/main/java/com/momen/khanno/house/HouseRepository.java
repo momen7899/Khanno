@@ -1,6 +1,5 @@
 package com.momen.khanno.house;
 
-import com.momen.khanno.city.City;
 import com.momen.khanno.region.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,5 +11,7 @@ public interface HouseRepository extends PagingAndSortingRepository<House, Long>
 
     Page<House> findAllByRegion(Region region, Pageable pageable);
 
-    Page<House> findAllByRegion_City(City city, Pageable pageable);
+    Page<House> findAllByRealState_Id(Long realStateId, Pageable pageable);
+
+    Page<House> findAllByRegion_City_Id(Long cityId, Pageable pageable);
 }

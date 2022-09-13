@@ -11,7 +11,7 @@ import org.mapstruct.Named;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface RealStateMapper {
     @Mappings({
             @Mapping(source = "location", target = "location", qualifiedByName = "locationDtoToLocation")})
@@ -21,9 +21,9 @@ public interface RealStateMapper {
             @Mapping(source = "location", target = "location", qualifiedByName = "locationToLocationDTO")})
     RealStateDTO toRealStateDTO(RealState realState);
 
-    List<RealStateDTO> toPlaceDTOS(List<RealState> places);
+    List<RealStateDTO> toRealStateDTOS(List<RealState> places);
 
-    List<RealState> toPlaces(List<RealStateDTO> placeDTOS);
+    List<RealState> toRealStates(List<RealStateDTO> placeDTOS);
 
     @Named("locationDtoToLocation")
     default Point<G2D> convertLocationDtoToLocation(LocationDTO locationDTO) {

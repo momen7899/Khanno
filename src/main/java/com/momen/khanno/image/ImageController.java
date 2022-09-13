@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/image_attachment/v1")
 @AllArgsConstructor
 public class ImageController {
-
     private final ImageService service;
     private ImageMapper mapper;
 
-
     @PostMapping
-    public ResponseEntity<Void> saveImageForUser(@RequestBody ImageDTO imageDTO) {
+    public ResponseEntity<Void> saveImage(@RequestBody ImageDTO imageDTO) {
         Image image = mapper.toImage(imageDTO);
         service.save(image);
         return ResponseEntity.status(HttpStatus.CREATED).build();

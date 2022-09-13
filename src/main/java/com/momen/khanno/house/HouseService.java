@@ -16,4 +16,6 @@ public interface HouseService {
     Page<House> getHousesInRegion(Long regionId, Integer page, Integer count);
 
     Page<House> getHousesInCity(Long cityId, Integer page, Integer count);
+
+    Page<House> getHousesInRealState(Long realStateId, Integer page, Integer count);
 }
