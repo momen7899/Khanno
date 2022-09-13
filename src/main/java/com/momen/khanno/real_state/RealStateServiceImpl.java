@@ -1,7 +1,6 @@
 package com.momen.khanno.real_state;
 
 import com.momen.khanno.common.exception.NotFoundException;
-import com.momen.khanno.house.House;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

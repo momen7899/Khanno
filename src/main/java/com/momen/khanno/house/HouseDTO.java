@@ -6,8 +6,6 @@ import com.momen.khanno.real_state.RealState;
 import com.momen.khanno.region.Region;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.Point;
 
 import java.math.BigDecimal;
 import java.util.List;
